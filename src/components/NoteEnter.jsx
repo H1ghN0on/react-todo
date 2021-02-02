@@ -6,7 +6,6 @@ function NoteEnter() {
     const [noteInput, setNoteInput] = React.useState('');
     const handleNoteInput = (e) => {
         setNoteInput(e.target.value);
-        console.log(noteInput);
     }
     const handleButtonClick = (e) => {
         e.preventDefault();

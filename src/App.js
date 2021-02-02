@@ -1,29 +1,22 @@
 import React from 'react';
-import { NoteEnter } from './components';
+import { NoteEnter, TodoList } from './components';
 import { useSelector, useDispatch } from 'react-redux';
-function App( { note }) {
-  console.log(note);
+function App() {
+  const { notes } = useSelector(({ note }) => {
+    return note;
+  });
+  
   return (
     <div className="App">
       <NoteEnter />
       <div className="todo-container">
-        <ul className="todo todo-list" id="todo">
-          <li className="todo-item">
-            <span className="text-todo">Купить МиниКупер</span>
-            <div className="todo-buttons">
-              <button className="todo-remove"></button>
-              <button className="todo-complete"></button>
-            </div>
-          </li>
-          <li className="todo-item">
-            <span className="text-todo">Выполнить усложненное задание</span>
-            <div className="todo-buttons">
-              <button className="todo-edit"></button>
-              <button className="todo-remove"></button>
-              <button className="todo-complete"></button>
-            </div>
-          </li>
-        </ul>
+        {
+          (notes.length !== 0) ?
+          (notes.map((value, index) => (
+            <TodoList key={index} value={value} />
+          )))
+          : (<div>Добавьте какое-нибудь дельце :)</div>)
+        }
         <ul className="todo todo-completed" id="completed">
           <li className="todo-item">
             <span className="text-todo">Продать Мазду</span>
