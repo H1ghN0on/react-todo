@@ -1,13 +1,11 @@
 import React from 'react';
-function App() {
+import { NoteEnter } from './components';
+import { useSelector, useDispatch } from 'react-redux';
+function App( { note }) {
+  console.log(note);
   return (
     <div className="App">
-      <header className="header">
-        <form className="todo-control">
-          <label><input className="header-input" type="text" placeholder="Какие планы?"></input></label>
-          <button className="header-button" id="add"></button>
-        </form>
-      </header>
+      <NoteEnter />
       <div className="todo-container">
         <ul className="todo todo-list" id="todo">
           <li className="todo-item">
