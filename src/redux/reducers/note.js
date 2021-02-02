@@ -14,6 +14,15 @@ const note = (state = initialState, action) => {
             })
         }
 
+        case "DELETE_NOTE" : {
+            const newNotes = [...state.notes];
+            newNotes.splice(action.payload, 1);
+            return ({
+                ...state,
+                notes: newNotes,
+            })
+        }
+
         default: return state;
     }
 };

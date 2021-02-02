@@ -1,6 +1,6 @@
 import React from 'react';
 import { NoteEnter, TodoList } from './components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 function App() {
   const { notes } = useSelector(({ note }) => {
     return note;
@@ -13,7 +13,7 @@ function App() {
         {
           (notes.length !== 0) ?
           (notes.map((value, index) => (
-            <TodoList key={index} value={value} />
+            <TodoList id={index} key={index} value={value} />
           )))
           : (<div>Добавьте какое-нибудь дельце :)</div>)
         }
