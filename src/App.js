@@ -57,7 +57,7 @@ function App() {
               id={index} 
               key={index} 
               value={value} 
-              onClickDeleteButton={onClickDeleteCompleteButton}
+              onClickDeleteCompleteButton={onClickDeleteCompleteButton}
               onClickNotCompleteButton={onClickNotCompleteButton}
             />
           )))
