@@ -28,3 +28,11 @@ export const toNotCompleteNote = (value, id) => ({
         id,
     }
 })
+
+export const editNote = (id, newValue) => ({
+    type: "EDIT_NOTE",
+    payload: {
+        id,
+        newValue,
+    }
+})

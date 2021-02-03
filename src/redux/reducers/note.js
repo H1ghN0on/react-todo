@@ -54,6 +54,14 @@ const note = (state = initialState, action) => {
                 completeNotes: newCompleteNotes,
             })
         }
+        case "EDIT_NOTE": {
+            const newNotes = [...state.notes];
+            newNotes.splice(action.payload.id, 1, action.payload.newValue);
+            return ({
+                ...state,
+                notes: newNotes,
+            })
+        }
         default: return state;
     }
 };
