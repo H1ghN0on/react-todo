@@ -1,28 +1,29 @@
 import React from 'react'
-import { deleteNote, completeNote, editNote } from '../redux/actions/note';
-import { useDispatch } from 'react-redux';
-function TodoList( { value, id }) {
+
+function TodoList( { value, id, onClickDeleteButton, onClickCompleteButton, onClickEditButton }) {
+
     const [flag, setFlag] = React.useState(false);
     const [input, setInput] = React.useState('');
-    const dispatch = useDispatch();
+
     const handleClickDeleteButton = () => {
         if (window.confirm("Вы действительно хотите удалить запись?")) {
-            dispatch(deleteNote(id));
+            onClickDeleteButton(id);
         }
     } 
     const handleChangeNote = (e) => {
         setInput(e.target.value);
     }
     const handleClickCompleteButton = () => {
-        dispatch(completeNote(value, id));
+        onClickCompleteButton(value, id);
     }
     const handleClickEditButton = (e) => {
         setFlag(!flag);
         setInput(e.target.value);
-        if (flag == true) {
-            dispatch(editNote(id, input))
+        if (flag == true && input != '') {
+            onClickEditButton(id, input);
         }
     }
+    
     return (
           <li className="todo-item">
             {

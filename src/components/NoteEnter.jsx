@@ -1,9 +1,9 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { addNote } from '../redux/actions/note';
-function NoteEnter() {
-    const dispatch = useDispatch();
+import React from 'react';
+
+function NoteEnter({ onAddButtonClick }) {
+
     const [noteInput, setNoteInput] = React.useState('');
+
     const handleNoteInput = (e) => {
         setNoteInput(e.target.value);
     }
@@ -11,10 +11,11 @@ function NoteEnter() {
         e.preventDefault();
         setNoteInput(e.target.value);
         if (noteInput.trim() != '') {
-            dispatch(addNote(noteInput));
+            onAddButtonClick(noteInput);
         }
         setNoteInput('');
     }
+    
     return (
         <header className="header">
             <form className="todo-control">
